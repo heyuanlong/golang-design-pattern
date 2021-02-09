@@ -2,24 +2,24 @@ package factorymethod
 
 import "testing"
 
-func compute(factory OperatorFactory, a, b int) int {
+func compute(factory AbstractFactory, a, b int) int {
 	op := factory.Create()
 	op.SetA(a)
 	op.SetB(b)
-	return op.Result()
+	return op.Show()
 }
 
 func TestOperator(t *testing.T) {
 	var (
-		factory OperatorFactory
+		factory AbstractFactory
 	)
 
-	factory = PlusOperatorFactory{}
+	factory = Product1Factory{}
 	if compute(factory, 1, 2) != 3 {
 		t.Fatal("error with factory method pattern")
 	}
 
-	factory = MinusOperatorFactory{}
+	factory = Product2Factory{}
 	if compute(factory, 4, 2) != 2 {
 		t.Fatal("error with factory method pattern")
 	}
