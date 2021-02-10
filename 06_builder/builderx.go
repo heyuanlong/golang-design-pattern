@@ -25,6 +25,7 @@ func (d *Director) Construct() {
 	d.builder.Part3()
 }
 
+//----------------------------------------------------------
 type Builder1 struct {
 	result string
 }
@@ -44,7 +45,7 @@ func (b *Builder1) Part3() {
 func (b *Builder1) GetResult() string {
 	return b.result
 }
-
+//----------------------------------------------------------
 type Builder2 struct {
 	result int
 }
@@ -64,3 +65,4 @@ func (b *Builder2) Part3() {
 func (b *Builder2) GetResult() int {
 	return b.result
 }
+//----------------------------------------------------------
