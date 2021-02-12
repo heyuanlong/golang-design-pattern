@@ -5,15 +5,14 @@ import "fmt"
 type Downloader interface {
 	Download(uri string)
 }
-
-type template struct {
-	implement
-	uri string
-}
-
 type implement interface {
 	download()
 	save()
+}
+//------------------------------------
+type template struct {
+	implement
+	uri string
 }
 
 func newTemplate(impl implement) *template {
@@ -33,7 +32,7 @@ func (t *template) Download(uri string) {
 func (t *template) save() {
 	fmt.Print("default save\n")
 }
-
+//------------------------------------------------
 type HTTPDownloader struct {
 	*template
 }
@@ -52,7 +51,7 @@ func (d *HTTPDownloader) download() {
 func (*HTTPDownloader) save() {
 	fmt.Printf("http save\n")
 }
-
+//-----------------------------------
 type FTPDownloader struct {
 	*template
 }
