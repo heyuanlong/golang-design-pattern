@@ -29,7 +29,7 @@ func (r *RequestChain) HandleFeeRequest(name string, money int) bool {
 func (r *RequestChain) HaveRight(money int) bool {
 	return true
 }
-
+//-----------------------------------------------
 type ProjectManager struct{}
 
 func NewProjectManagerChain() *RequestChain {
@@ -50,7 +50,7 @@ func (*ProjectManager) HandleFeeRequest(name string, money int) bool {
 	fmt.Printf("Project manager don't permit %s %d fee request\n", name, money)
 	return false
 }
-
+//-----------------------------------------------
 type DepManager struct{}
 
 func NewDepManagerChain() *RequestChain {
@@ -71,7 +71,7 @@ func (*DepManager) HandleFeeRequest(name string, money int) bool {
 	fmt.Printf("Dep manager don't permit %s %d fee request\n", name, money)
 	return false
 }
-
+//-----------------------------------------------
 type GeneralManager struct{}
 
 func NewGeneralManagerChain() *RequestChain {

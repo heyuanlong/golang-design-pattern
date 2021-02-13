@@ -2,6 +2,7 @@ package bridge
 
 import "fmt"
 
+//--------------------------------------------
 type AbstractMessage interface {
 	SendMessage(text, to string)
 }
@@ -9,7 +10,7 @@ type AbstractMessage interface {
 type MessageImplementer interface {
 	Send(text, to string)
 }
-
+//--------------------------------------------
 type MessageSMS struct{}
 
 func ViaSMS() MessageImplementer {
@@ -19,7 +20,7 @@ func ViaSMS() MessageImplementer {
 func (*MessageSMS) Send(text, to string) {
 	fmt.Printf("send %s to %s via SMS", text, to)
 }
-
+//--------------------------------------------
 type MessageEmail struct{}
 
 func ViaEmail() MessageImplementer {
@@ -29,7 +30,7 @@ func ViaEmail() MessageImplementer {
 func (*MessageEmail) Send(text, to string) {
 	fmt.Printf("send %s to %s via Email", text, to)
 }
-
+//--------------------------------------------
 type CommonMessage struct {
 	method MessageImplementer
 }
@@ -43,7 +44,7 @@ func NewCommonMessage(method MessageImplementer) *CommonMessage {
 func (m *CommonMessage) SendMessage(text, to string) {
 	m.method.Send(text, to)
 }
-
+//--------------------------------------------
 type UrgencyMessage struct {
 	method MessageImplementer
 }

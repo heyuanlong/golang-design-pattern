@@ -10,10 +10,7 @@ type Visitor interface {
 	Visit(Customer)
 }
 
-type EnterpriseCustomer struct {
-	name string
-}
-
+//-----------------------------------------------------------------
 type CustomerCol struct {
 	customers []Customer
 }
@@ -27,6 +24,10 @@ func (c *CustomerCol) Accept(visitor Visitor) {
 		customer.Accept(visitor)
 	}
 }
+//-----------------------------------------------------------------
+type EnterpriseCustomer struct {
+	name string
+}
 
 func NewEnterpriseCustomer(name string) *EnterpriseCustomer {
 	return &EnterpriseCustomer{
@@ -37,7 +38,7 @@ func NewEnterpriseCustomer(name string) *EnterpriseCustomer {
 func (c *EnterpriseCustomer) Accept(visitor Visitor) {
 	visitor.Visit(c)
 }
-
+//-----------------------------------------------------------------
 type IndividualCustomer struct {
 	name string
 }
@@ -51,7 +52,7 @@ func NewIndividualCustomer(name string) *IndividualCustomer {
 func (c *IndividualCustomer) Accept(visitor Visitor) {
 	visitor.Visit(c)
 }
-
+//-----------------------------------------------------------------
 type ServiceRequestVisitor struct{}
 
 func (*ServiceRequestVisitor) Visit(customer Customer) {
